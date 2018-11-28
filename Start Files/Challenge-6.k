@@ -28,7 +28,48 @@ can appear at any point in the front wall.
 
 • Each porch is either empty or marked with a single beeper representing
 a Halloween treat.
-
+   
 • At the end of execution, Karel should return to its original intersection
 at the west end of the street, but should now be facing west.
 */
+
+import "turns";
+function OperationStealCandy(){
+	while(frontIsClear()){
+		WestToEast();
+ 		trickOrTreat();
+	}
+		turnAround();
+
+	while(frontIsClear()){
+		WestToEast();
+ 		trickOrTreat();
+	}
+}
+
+function WestToEast(){
+	while(rightIsBlocked()){
+		move();
+	}
+	if(rightIsClear()){
+		turnRight();
+		move();
+
+	}
+}
+
+function trickOrTreat(){
+	if(beepersPresent()){
+		pickBeeper();
+		turnAround();
+		move();
+		turnRight();
+	if(frontIsClear()){
+		move();
+	}
+	}else{turnAround();move();turnRight();move();}
+} 
+
+     
+     
+ 
